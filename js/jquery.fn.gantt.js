@@ -302,7 +302,7 @@
                         var nameRow = $('<div>').addClass('row name').addClass('row' + i).addClass(entry.desc ? '' : 'fn-wide')
                             .attr('id', 'rowheader' + i).data('offset', i % settings.itemsPerPage * tools.getCellSize()).data('id', entry.id)
                             .append(
-                                $('<span>').addClass('fn-label').addClass(entry.cssClass ? entry.cssClass : '').text(entry.name || '')
+                                $('<span>').addClass('fn-label').addClass(entry.cssClass ? entry.cssClass : '').html(entry.name || '')
                             );
 
                         core.setRowClick(element, nameRow, i);
@@ -312,7 +312,7 @@
                         if (entry.desc) {
                             var descRow = $('<div>').addClass('row desc').addClass('row' + i).attr('id', 'RowdId_' + i).data('id', entry.id)
                                 .append(
-                                     $('<span>').addClass('fn-label').addClass(entry.cssClass ? entry.cssClass : '').text(entry.desc)
+                                     $('<span>').addClass('fn-label').addClass(entry.cssClass ? entry.cssClass : '').html(entry.desc)
                                 );
                             core.setRowClick(element, descRow, i);
 
