@@ -132,6 +132,7 @@
             navigate: "buttons",
             navigationPosition : "bottom",
             scrollToToday: true,
+            horizMouseScroll: true,
             // cookie options
             useCookie: false,
             cookieKey: "jquery.fn.gantt",
@@ -328,10 +329,12 @@
                 var dataPanel = $('<div class="dataPanel" style="width: ' + width + 'px;"/>');
 
                 // Handle mousewheel events for scrolling the data panel
-                var wheel = 'onwheel' in element ?
-                    'wheel' : document.onmousewheel !== undefined ?
-                    'mousewheel' : 'DOMMouseScroll';
-                $(element).on(wheel, function (e) { core.wheelScroll(element, e); });
+                if (settings.horizMouseScroll) {
+                    var wheel = 'onwheel' in element ?
+                        'wheel' : document.onmousewheel !== undefined ?
+                        'mousewheel' : 'DOMMouseScroll';
+                    $(element).on(wheel, function (e) { core.wheelScroll(element, e); });
+                }
 
                 // Handle click events and dispatch to registered `onAddClick` function
                 dataPanel.click(function (e) {
